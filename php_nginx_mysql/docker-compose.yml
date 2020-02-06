@@ -40,6 +40,8 @@ services:
       - ./mysql/lib/mysql:/var/lib/mysql
       - ./mysql/conf:/etc/mysql
       - ./mysql/logs:/var/log/mysql
+    ports:
+      - "3306:3306"
 
 networks:
   php_nginx_mysql:
