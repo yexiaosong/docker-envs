@@ -37,7 +37,7 @@ services:
     networks:
       - php_nginx_mysql
     volumes:
-      - ./mysql/lib/mysql:/var/lib/mysql
+      - ./mysql/lib:/var/lib/mysql
       - ./mysql/conf:/etc/mysql
       - ./mysql/logs:/var/log/mysql
     ports:
