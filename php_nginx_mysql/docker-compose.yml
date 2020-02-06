@@ -3,6 +3,7 @@ services:
   web:
     container_name: nginx
     image: nginx
+    restart: always
     networks:
       - php_nginx_mysql 
     volumes:
@@ -19,6 +20,7 @@ services:
     container_name: php-fpm
     command: php-fpm --allow-to-run-as-root
     image: torniker/phpfpm-5.6
+    restart: always
     networks:
       - php_nginx_mysql
     volumes:
@@ -31,12 +33,15 @@ services:
   db:
     container_name: mysql
     image: mysql:5.6
+    restart: always
     networks:
       - php_nginx_mysql
     volumes:
-      - ./mysql/lib/mysql:/var/lib/mysql
+      - ./mysql/lib:/var/lib/mysql
       - ./mysql/conf:/etc/mysql
       - ./mysql/logs:/var/log/mysql
+    ports:
+      - "3306:3306"
 
 networks:
   php_nginx_mysql:
